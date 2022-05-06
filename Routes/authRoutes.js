@@ -64,11 +64,11 @@ app.get('/google',
              let lastUser = await userModel.find({}).sort({ id : -1}).limit(1);
              let encrptedPassword = encryptDecrypt.encryptPassword("kajjajbhjvqnjq@123$$$$");
               let userDetailObj ={
-                 firstName : req.user.given_name,
-                 lastName : req.user.family_name,
+                 firstName : req.user._json.given_name,
+                 lastName : req.user._json.family_name,
                  age:-1,
                  phoneNo:-1,
-                 email,
+                 email: req.user._json.email,
                  gender:"NA",
                  password:encrptedPassword,
                  id:lastUser[0].id + 1
