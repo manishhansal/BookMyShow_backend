@@ -1,8 +1,9 @@
 const express = require('express');
+const app = express();
 const authRouter = require('./Routes/authRoutes');
 const DbConnection = require('./DBConnection/mongoDb');
 const passport = require('./Authentication/googleLogin');
-const app = express();
+
 const PORT = 9111;
 
 
