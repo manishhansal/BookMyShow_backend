@@ -8,7 +8,10 @@ const user = new mongoose.Schema({
     "gender": {type:String},
     "id": {type:String},
     "email":{type:String},
-    "password":{type:String}
+    "password":{type:String},
+    "facebook_id" :{type:String},
+    "profile_pic": {type:String},
+    "fullName":{type:String},
 });
 
 module.exports = mongoose.model('user', user);

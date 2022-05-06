@@ -4,7 +4,8 @@ app.use(express.json());
 const passport = require('../Authentication/googleLogin');
 const userModel = require('../Models/userModel');
 const JWTService = require('../CommonLib/JWTtoken');
-const encryptDecrypt = require('../CommonLib/encryption-decryption')
+const encryptDecrypt = require('../CommonLib/encryption-decryption');
+
 
 
 app.get("/failed", (req, res) => {
@@ -87,5 +88,14 @@ app.get('/google',
 
     }
 );
+
+app.get('/auth/facebook', passport.authenticate('facebook'));
+
+//This endpoint is the Facebook Callback URL and on success or failure returns a response to the app
+app.get('/callback', passport.authenticate('facebook', {          
+            failureRedirect: '/login' }), (req, res) => {
+                    //  res.redirect('/user/home');
+                    res.send("successfully login")
+});
 
 module.exports = app;

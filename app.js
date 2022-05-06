@@ -3,6 +3,10 @@ const app = express();
 const authRouter = require('./Routes/authRoutes');
 const DbConnection = require('./DBConnection/mongoDb');
 const passport = require('./Authentication/googleLogin');
+const facebookAuth = require("./Authentication/facebookLogin");
+
+app.use('/auth', facebookAuth)
+
 
 const PORT = 9111;
 
